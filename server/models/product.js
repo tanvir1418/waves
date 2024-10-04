@@ -1,60 +1,62 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const productSchema = mongoose.Schema({
-    name:{
-        required: true,
-        type: String,
-        unique: 1,
-        maxlength:100
+const productSchema = mongoose.Schema(
+  {
+    name: {
+      required: true,
+      type: String,
+      unique: 1,
+      maxlength: 100,
     },
-    description:{
-        required: true,
-        type: String,
-        maxlength: 100000
+    description: {
+      required: true,
+      type: String,
+      maxlength: 100000,
     },
-    price:{
-        required: true,
-        type: Number,
-        maxlength: 255
+    price: {
+      required: true,
+      type: Number,
+      maxlength: 255,
     },
-    brand:{
-        type: Schema.Types.ObjectId,
-        ref: 'Brand',                       // This connected to brand.js -> Brand
-        required: true
+    brand: {
+      type: Schema.Types.ObjectId,
+      ref: "Brand", // This connected to brand.js -> Brand
+      required: true,
     },
-    shipping:{
-        required: true,
-        type: Boolean
+    shipping: {
+      required: true,
+      type: Boolean,
     },
-    available:{
-        required: true,
-        type: Boolean
+    available: {
+      required: true,
+      type: Boolean,
     },
-    wood:{
-        type: Schema.Types.ObjectId,
-        ref: 'Wood',                        // This connected to wood.js -> Wood
-        required: true
+    wood: {
+      type: Schema.Types.ObjectId,
+      ref: "Wood", // This connected to wood.js -> Wood
+      required: true,
     },
-    frets:{
-        required: true,
-        type: Number
+    frets: {
+      required: true,
+      type: Number,
     },
     sold: {
-        type: Number,
-        maxlength: 100,
-        default: 0
+      type: Number,
+      maxlength: 100,
+      default: 0,
     },
     publish: {
-        required: true,
-        type: Boolean
+      required: true,
+      type: Boolean,
     },
-    images:{
-        type: Array,
-        default: []
-    }
+    images: {
+      type: Array,
+      default: [],
+    },
+  },
+  { timestamps: true }
+);
 
-}, {timestamps: true});
-
-const Product = mongoose.model('Product', productSchema);
-module.exports = { Product }
+const Product = mongoose.model("Product", productSchema);
+module.exports = { Product };
